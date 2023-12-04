@@ -22,8 +22,4 @@
     <ProjectReference Include="..\ANK14.BurgerShop.Entities\ANK14.BurgerShop.Entities.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="UnitOfWork\" />
-  </ItemGroup>
-
 </Project>

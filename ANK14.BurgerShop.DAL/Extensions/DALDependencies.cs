@@ -1,4 +1,5 @@
-﻿using ANK14.BurgerShop.DAL.Contexts;
+﻿using ANK14.BurgerShop.DAL.Abstracts;
+using ANK14.BurgerShop.DAL.Contexts;
 using ANK14.BurgerShop.Entities.Concretes;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -8,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ANK14.BurgerShop.DAL.UnitOfWork;
 
 namespace ANK14.BurgerShop.DAL.Extensions
 {
@@ -37,7 +39,12 @@ namespace ANK14.BurgerShop.DAL.Extensions
             }).AddDefaultTokenProviders()
               .AddEntityFrameworkStores<AppDbContext>();
             #endregion
+
+            #region Uow
+            services.AddScoped<IUow, Uow>();
+            #endregion
         }
+
     }
 }
 
