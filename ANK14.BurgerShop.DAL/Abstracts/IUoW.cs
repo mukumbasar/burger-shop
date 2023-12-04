@@ -11,5 +11,10 @@ namespace ANK14.BurgerShop.DAL.Abstracts
 	{
         void SaveChanges();
         IRepository<T> GetGenericRepository<T>() where T : class, IEntity;
+        IExtraRepository GetExtraRepository();
+        IMenuRepository GetMenuRepository();
+        IMenuSizeRepository GetMenuSizeRepository();
+        IOrderExtraRepository GetOrderExtraRepository();
+        IOrderRepository GetOrderRepository();
     }
 }

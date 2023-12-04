@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ANK14.BurgerShop.DAL.Abstracts
 {
-    public interface IExtraRepository : IRepository<Extra>
+    public interface IMenuRepository : IRepository<Menu>
     {
 
     }

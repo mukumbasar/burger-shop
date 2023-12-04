@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ANK14.BurgerShop.DAL.UnitOfWork;
+using ANK14.BurgerShop.DAL.Repository;
 
 namespace ANK14.BurgerShop.DAL.Extensions
 {
@@ -40,7 +41,12 @@ namespace ANK14.BurgerShop.DAL.Extensions
               .AddEntityFrameworkStores<AppDbContext>();
             #endregion
 
-            #region Uow
+            #region Uow and Repositories
+            services.AddScoped<IExtraRepository, ExtraRepository>();
+            services.AddScoped<IMenuRepository, MenuRepository>();
+            services.AddScoped<IMenuSizeRepository, MenuSizeRepository>();
+            services.AddScoped<IOrderExtraRepository, OrderExtraRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IUow, Uow>();
             #endregion
         }
