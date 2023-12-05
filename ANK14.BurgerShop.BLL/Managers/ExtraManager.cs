@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ANK14.BurgerShop.BLL.Managers
 {
-    internal class ExtraManager : BaseManager<Extra, ExtraDto>
+    public class ExtraManager : BaseManager<Extra, ExtraDto>
     {
         public ExtraManager(IMapper mapper, IUow uow) : base(mapper, uow)
         {
