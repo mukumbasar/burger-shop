@@ -3,6 +3,7 @@ using ANK14.BurgerShop.Dtos.Concrete;
 using ANK14.BurgerShop.MVC.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace ANK14.BurgerShop.MVC.Controllers
 {
@@ -46,14 +47,21 @@ namespace ANK14.BurgerShop.MVC.Controllers
         [HttpPost]
         public async Task<IActionResult> Update(ExtraViewModel vm)
         {
-            //var dto = _mapper.Map<UpdateExtraDto>(vm);
-            //if (ModelState.IsValid)
-            //{
-            //    await _manager.Update(dto);
-            //    return RedirectToAction("List");
-            //}
-            //ViewBag.Errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
-            return View();
+            
+            if (ModelState.IsValid)
+            {
+                var dto = _mapper.Map<ExtraDto>(vm);
+                var result = await _manager.UpdateAsync(dto);
+                
+                if (result.IsSuccess)
+                {
+                    return RedirectToAction("Index");
+                }
+
+                ViewBag.Error = result.Message;
+            }
+
+            return View("Index");
         }
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
@@ -62,6 +70,15 @@ namespace ANK14.BurgerShop.MVC.Controllers
 
             await _manager.DeleteAsync(dto.Context);
             return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> GetExtra(int id)
+        {
+            var dto = await _manager.GetAsync(true, x => x.Id == id);
+            var vm =_mapper.Map<ExtraViewModel>(dto.Context);
+
+
+            return PartialView("_ExtraPartialView", vm);
         }
     }
 }
