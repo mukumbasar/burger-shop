@@ -32,7 +32,7 @@ namespace ANK14.BurgerShop.BLL.Managers
 			{
 				var user = await _userManager.FindByEmailAsync(loginUserDto.Email);
 				await _signInManager.SignOutAsync();
-				var result= await _signInManager.PasswordSignInAsync(user,loginUserDto.Password,true,false);
+				var result= await _signInManager.PasswordSignInAsync(user,loginUserDto.Password,false,false);
 				if(result.Succeeded)
 				{
 					await _userManager.ResetAccessFailedCountAsync(user);

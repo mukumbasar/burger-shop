@@ -63,7 +63,9 @@ namespace ANK14.BurgerShop.DAL.Repository
                 query = query.AsNoTracking();
             }
 
-            return await query.ToListAsync();
+            var result = await query.ToListAsync();
+
+            return result;
         }
 
         public async Task<T> GetAsync(bool asNoTracking = true, Expression<Func<T, bool>>? filter = null, params Expression<Func<T, object>>[] includeProperties)
@@ -89,7 +91,9 @@ namespace ANK14.BurgerShop.DAL.Repository
                 query = query.AsNoTracking();
             }
 
-            return await query.SingleAsync();
+            var result = await query.SingleAsync();
+
+            return result;
         }
     }
 }

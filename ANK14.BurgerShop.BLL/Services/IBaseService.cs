@@ -12,10 +12,10 @@ namespace ANK14.BurgerShop.BLL.Services
 {
     public interface IBaseService<T, TDto> where T : class, IEntity where TDto : class, IDto
     {
-        Response InsertAsync(TDto dto);
-        Response UpdateAsync(TDto dto);
-        Response DeleteAsync(TDto dto);
-        Response<TDto> GetAsync(bool asNoTracking = true, Expression<Func<T, bool>>? filter = null, params Expression<Func<T, object>>[] includeProperties);
-        Response<IEnumerable<TDto>> GetAllAsync(bool asNoTracking = true, Expression<Func<T, bool>>? filter = null, params Expression<Func<T, object>>[] includeProperties);
+        Task<Response> InsertAsync(TDto dto);
+        Task<Response> UpdateAsync(TDto dto);
+        Task<Response> DeleteAsync(TDto dto);
+        Task<Response<TDto>> GetAsync(bool asNoTracking = true, Expression<Func<T, bool>>? filter = null, params Expression<Func<T, object>>[] includeProperties);
+        Task<Response<IEnumerable<TDto>>> GetAllAsync(bool asNoTracking = true, Expression<Func<T, bool>>? filter = null, params Expression<Func<T, object>>[] includeProperties);
     }
 }

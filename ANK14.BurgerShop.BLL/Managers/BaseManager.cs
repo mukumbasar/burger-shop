@@ -24,12 +24,12 @@ namespace ANK14.BurgerShop.BLL.Managers
             _uow = uow;
         }
 
-        public Response InsertAsync(TDto dto)
+        public async Task<Response> InsertAsync(TDto dto)
         {
             try
             {
                 var entity = _mapper.Map<T>(dto);
-                _uow.GetGenericRepository<T>().AddAsync(entity);
+                await _uow.GetGenericRepository<T>().AddAsync(entity);
                 _uow.SaveChanges();
                 return Response.Success("Insertion was successful.");
             }
@@ -39,12 +39,12 @@ namespace ANK14.BurgerShop.BLL.Managers
             }
         }
 
-        public Response UpdateAsync(TDto dto)
+        public async Task<Response> UpdateAsync(TDto dto)
         {
             try
             {
                 var entity = _mapper.Map<T>(dto);
-                _uow.GetGenericRepository<T>().UpdateAsync(entity);
+                await _uow.GetGenericRepository<T>().UpdateAsync(entity);
                 _uow.SaveChanges();
                 return Response.Success("Updating was successful.");
             }
@@ -54,12 +54,12 @@ namespace ANK14.BurgerShop.BLL.Managers
             }
         }
 
-        public Response DeleteAsync(TDto dto)
+        public async Task<Response> DeleteAsync(TDto dto)
         {
             try
             {
                 var entity = _mapper.Map<T>(dto);
-                _uow.GetGenericRepository<T>().DeleteAsync(entity);
+                await _uow.GetGenericRepository<T>().DeleteAsync(entity);
                 _uow.SaveChanges();
                 return Response.Success("Deletion was successful.");
             }
@@ -69,11 +69,11 @@ namespace ANK14.BurgerShop.BLL.Managers
             }
         }
 
-        public Response<TDto> GetAsync(bool asNoTracking = true, Expression<Func<T, bool>>? filter = null, params Expression<Func<T, object>>[] includeProperties)
+        public async Task<Response<TDto>> GetAsync(bool asNoTracking = true, Expression<Func<T, bool>>? filter = null, params Expression<Func<T, object>>[] includeProperties)
         {
             try
             {
-                var entity = _uow.GetGenericRepository<T>().GetAsync(asNoTracking, filter, includeProperties);
+                var entity = await _uow.GetGenericRepository<T>().GetAsync(asNoTracking, filter, includeProperties);
                 var dto = _mapper.Map<TDto>(entity);
                 return Response<TDto>.Success(dto, "Acquirement was successful.");
             }
@@ -83,11 +83,11 @@ namespace ANK14.BurgerShop.BLL.Managers
             }
         }
 
-        public Response<IEnumerable<TDto>> GetAllAsync(bool asNoTracking = true, Expression<Func<T, bool>>? filter = null, params Expression<Func<T, object>>[] includeProperties)
+        public async Task<Response<IEnumerable<TDto>>> GetAllAsync(bool asNoTracking = true, Expression<Func<T, bool>>? filter = null, params Expression<Func<T, object>>[] includeProperties)
         {
             try
             {
-                var entities = _uow.GetGenericRepository<T>().GetAllAsync(asNoTracking, filter, includeProperties);
+                var entities = await _uow.GetGenericRepository<T>().GetAllAsync(asNoTracking, filter, includeProperties);
                 var dtos = _mapper.Map<List<TDto>>(entities);
                 return Response<IEnumerable<TDto>>.Success(dtos, "Acquirement was successful.");
             }
