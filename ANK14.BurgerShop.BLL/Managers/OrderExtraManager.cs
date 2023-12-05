@@ -1,4 +1,5 @@
-﻿using ANK14.BurgerShop.DAL.Abstracts;
+﻿using ANK14.BurgerShop.BLL.Services;
+using ANK14.BurgerShop.DAL.Abstracts;
 using ANK14.BurgerShop.Dtos.Concrete;
 using ANK14.BurgerShop.Entities.Concretes;
 using AutoMapper;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ANK14.BurgerShop.BLL.Managers
 {
-    public class OrderExtraManager : BaseManager<Extra, ExtraDto>
+    public class OrderExtraManager : BaseManager<OrderExtra, OrderExtraDto>, IOrderExtraService
     {
         public OrderExtraManager(IMapper mapper, IUow uow) : base(mapper, uow)
         {
