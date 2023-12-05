@@ -29,7 +29,7 @@ namespace ANK14.BurgerShop.MVC.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Add(AddOrderViewModel vm)
+        public async Task<IActionResult> Add(OrderViewModel vm)
         {
             //var dto = _mapper.Map<AddOrderDto>(vm);
             //if (ModelState.IsValid)
@@ -48,7 +48,7 @@ namespace ANK14.BurgerShop.MVC.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Update(UpdateOrderViewModel vm)
+        public async Task<IActionResult> Update(OrderViewModel vm)
         {
             //var dto = _mapper.Map<UpdateOrderDto>(vm);
             //if (ModelState.IsValid)
