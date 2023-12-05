@@ -1,0 +1,33 @@
+﻿@model List<MenuViewModel>
+
+@{
+    ViewData["Title"] = "Menu List";
+}
+
+<h2>Menu List</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Photo Path</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var extra in Model)
+        {
+            <tr>
+                <td>@extra.Name</td>
+                <td>@extra.Price</td>
+                <td>@extra.PhotoPath</td>
+                <td>
+                    <a asp-page="Update" asp-route-id="@extra.Id">Update</a> |
+                    <a asp-page="Delete" asp-route-id="@extra.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

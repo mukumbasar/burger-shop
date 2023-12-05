@@ -1,0 +1,28 @@
+﻿@model ExtraViewModel
+
+@{
+    ViewData["Title"] = "Update Extra";
+}
+
+<h2>Update Extra</h2>
+
+<form method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="AdditionalPrice"></label>
+        <input asp-for="AdditionalPrice" class="form-control" />
+        <span asp-validation-for="AdditionalPrice" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Update</button>
+    </div>
+</form>
+
