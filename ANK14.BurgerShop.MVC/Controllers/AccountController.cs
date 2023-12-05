@@ -1,4 +1,6 @@
-﻿using ANK14.BurgerShop.MVC.Models;
+﻿using ANK14.BurgerShop.BLL.Services;
+using ANK14.BurgerShop.Dtos.Concrete;
+using ANK14.BurgerShop.MVC.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,16 +8,14 @@ namespace ANK14.BurgerShop.MVC.Controllers
 {
     public class AccountController : Controller
     {
-        //private readonly IEmailService _emailService;
-        //private readonly IAccountService _accountService;
-        //private readonly IMapper _mapper;
+        private readonly IAccountService _accountService;
+        private readonly IMapper _mapper;
 
-        //public AccountController(IEmailService emailService, IAccountService accountService, IMapper mapper)
-        //{
-        //    _emailService = emailService;
-        //    _accountService = accountService;
-        //    _mapper = mapper;
-        //}
+        public AccountController(IAccountService accountService, IMapper mapper)
+        {
+            _accountService = accountService;
+            _mapper = mapper;
+        }
 
         public IActionResult Register()
         {
@@ -25,30 +25,21 @@ namespace ANK14.BurgerShop.MVC.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel vm)
         {
-            //if (ModelState.IsValid)
-            //{
-            //    var dto = _mapper.Map<CreateAppUserDto>(vm);
-            //    var result = await _accountService.RegisterAsync(dto);
+            if (ModelState.IsValid)
+            {
+                var dto = _mapper.Map<RegisterUserDto>(vm);
+                var result = await _accountService.RegisterAsync(dto);
 
-            //    if (result.IsSuccess)
-            //    {
-            //        return RedirectToAction("LogIn");
-            //    }
-            //    ViewBag.RegisterError = result.Message;
-            //}
+                if (result.IsSuccess)
+                {
+                    return RedirectToAction("Login");
+                }
+                ViewBag.RegisterError = result.Message;
+            }
 
             return View(vm);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> EmailActivation(string userId, string token)
-        {
-            //var result = await _accountService.ActivateEmailAsync(userId, token);
-
-            //ViewBag.LoginMessage = result.Message;
-
-            return View("Login");
-        }
 
         public IActionResult Login()
         {
@@ -58,28 +49,28 @@ namespace ANK14.BurgerShop.MVC.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel wm)
         {
-            //if (ModelState.IsValid)
-            //{
-            //    var dto = _mapper.Map<LogInAppUserDto>(wm);
-            //    var result = await _accountService.LogInAsync(dto);
+            if (ModelState.IsValid)
+            {
+                var dto = _mapper.Map<LoginUserDto>(wm);
+                var result = await _accountService.LoginAsync(dto);
 
-            //    if (result.IsSuccess)
-            //    {
-            //        return RedirectToAction("Manage", "Makale");
-            //    }
+                if (result.IsSuccess)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
 
-            //    ViewBag.LoginMessage = result.Message;
-            //    return View(wm);
-            //}
+                ViewBag.LoginMessage = result.Message;
+                return View(wm);
+            }
             return View(wm);
         }
 
         public async Task<IActionResult> Logout()
         {
-            //_accountService.SignOutAsync();
+            await _accountService.LogoutAsync();
 
             return RedirectToAction("Index", "Home");
         }
     }
 }
-}
+

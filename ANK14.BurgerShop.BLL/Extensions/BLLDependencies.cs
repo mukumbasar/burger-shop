@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace ANK14.BurgerShop.BLL.Extensions
 {
-    public static class BLDependencies
+    public static class BLLDependencies
     {
-        public static void AddBlDependencies(this IServiceCollection services, Assembly configFromAssembly)
+        public static void AddBLLDependencies(this IServiceCollection services, Assembly configFromAssembly)
         {
             services.AddAutoMapper(Assembly.GetExecutingAssembly(), configFromAssembly);
 

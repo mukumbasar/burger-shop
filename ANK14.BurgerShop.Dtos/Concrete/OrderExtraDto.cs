@@ -11,5 +11,7 @@ namespace ANK14.BurgerShop.Dtos.Concrete
     {
 		public int Id { get; set; }
 		public int Quantity { get; set; }
-	}
+        public int OrderId { get; set; }
+        public int ExtraId { get; set; }
+    }
 }

@@ -66,7 +66,8 @@ namespace ANK14.BurgerShop.BLL.Managers
 
 			if (result.Succeeded)
 			{
-				return Response.Success();
+                await _userManager.AddToRoleAsync(user, "AppClient");
+                return Response.Success();
 			}
 			var errorList = result.Errors.Select(x =>
 			 x.Description
