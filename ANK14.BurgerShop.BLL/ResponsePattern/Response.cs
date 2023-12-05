@@ -36,5 +36,10 @@ namespace ANK14.BurgerShop.BLL.ResponsePattern
         {
             return new Response<T> { IsSuccess = true, Message = message, Context = context };
         }
+
+        public static new Response<T> Failure(string message = "")
+        {
+            return new Response<T> { IsSuccess = true, Message = message};
+        }
     }
 }
