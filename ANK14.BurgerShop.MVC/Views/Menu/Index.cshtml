@@ -1,0 +1,100 @@
+﻿@model MenuViewModel
+
+<h2 class="text-danger">@ViewBag.Error</h2>
+
+<form asp-action="Add" method="post">
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Price"></label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PhotoPath"></label>
+        <input asp-for="PhotoPath" class="form-control" type="file" />
+        <span asp-validation-for="PhotoPath" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Add</button>
+    </div>
+</form>
+
+<h2>Menu List</h2>
+
+<table class="grid table" id="Menus">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Photo</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var menu in ViewBag.Menus)
+        {
+            <tr>
+                <td>@menu.Id</td>
+                <td>@menu.Name</td>
+                <td>@menu.Price</td>
+                <td>
+                    <img src="@menu.PhotoPath" alt="@menu.Name" width="100" height="100" />
+                </td>
+                <td>
+                    <a class="details btn btn-dark">Get Menu</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="modal fade" id="partialModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Data Modal</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+
+    <script type="text/javascript">
+        $(function () {
+            $("#Menus .details").click(function () {
+                var id = $(this).closest("tr").find("td").eq(0).html();
+
+                $.ajax({
+                    type: "GET",
+                    url: "/Menu/GetMenu",
+                    data: { "id": id },
+                    success: function (response) {
+                        $("#partialModal").find(".modal-body").html(response);
+                        $("#partialModal").modal('show');
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    }
+                });
+            });
+        });
+    </script>
+}
+
+
