@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ANK14.BurgerShop.BLL.Extensions
 {
-    internal class BLDependencies
+    public class BLDependencies
     {
     }
 }
