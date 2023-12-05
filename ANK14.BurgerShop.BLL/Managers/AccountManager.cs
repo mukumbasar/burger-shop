@@ -32,7 +32,6 @@ namespace ANK14.BurgerShop.BLL.Managers
 			{
 				var user = await _userManager.FindByEmailAsync(loginUserDto.Email);
 				await _signInManager.SignOutAsync();
-
 				var result= await _signInManager.PasswordSignInAsync(user,loginUserDto.Password,true,false);
 				if(result.Succeeded)
 				{
@@ -43,8 +42,10 @@ namespace ANK14.BurgerShop.BLL.Managers
 				if(result.IsLockedOut)
 				{
 					var lockoutEndUtc = await _userManager.GetLockoutEndDateAsync(user);
-
+					var timeLeft=lockoutEndUtc.Value - DateTime.UtcNow;
+					return Response.Failure($"Giriş başarısız. Lütfen {timeLeft} dakika sonra tekrar deneyiniz.");
 				}
+				return Response.Failure("Giriş Başarısız");
 			}
 			catch
 			{
