@@ -1,5 +1,6 @@
 ﻿using ANK14.BurgerShop.BLL.Services;
 using ANK14.BurgerShop.Dtos.Concrete;
+using ANK14.BurgerShop.MVC.Helpers;
 using ANK14.BurgerShop.MVC.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -28,6 +29,11 @@ namespace ANK14.BurgerShop.MVC.Controllers
         [HttpPost]
         public async Task<IActionResult> Add(MenuViewModel vm)
         {
+
+            var path = await ImageHelper.Insert(vm.Photo);
+
+            vm.PhotoPath = path;
+
             var dto = _mapper.Map<MenuDto>(vm);
             if (ModelState.IsValid)
             {
@@ -41,12 +47,15 @@ namespace ANK14.BurgerShop.MVC.Controllers
                 ViewBag.Error = result.Message;
             }
 
-            return View("Index");
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
         public async Task<IActionResult> Update(MenuViewModel vm)
         {
+            var path = await ImageHelper.Insert(vm.Photo);
+
+            vm.PhotoPath = path;
 
             if (ModelState.IsValid)
             {
@@ -61,7 +70,7 @@ namespace ANK14.BurgerShop.MVC.Controllers
                 ViewBag.Error = result.Message;
             }
 
-            return View("Index");
+            return RedirectToAction("Index");
         }
         [HttpGet]
         public async Task<IActionResult> Delete(int id)

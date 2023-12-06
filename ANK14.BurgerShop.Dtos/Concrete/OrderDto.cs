@@ -1,4 +1,5 @@
 ﻿using ANK14.BurgerShop.Dtos.Base;
+using ANK14.BurgerShop.Entities.Concretes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +12,11 @@ namespace ANK14.BurgerShop.Dtos.Concrete
     {
 		public int Id { get; set; }
 		public int Quantity { get; set; }
-	}
+        public string AppUserId { get; set; }
+        public int MenuId { get; set; }
+        public Menu? Menu { get; set; }
+        public int MenuSizeId { get; set; }
+        public int TotalPrice { get; set; }
+        public DateTime OrderDate { get; set; }
+    }
 }

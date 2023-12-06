@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ANK14.BurgerShop.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231204110711_1Mig")]
+    [Migration("20231206113601_1Mig")]
     partial class _1Mig
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -161,7 +161,6 @@ namespace ANK14.BurgerShop.DAL.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhotoPath")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Price")
@@ -210,6 +209,9 @@ namespace ANK14.BurgerShop.DAL.Migrations
                     b.Property<int>("MenuSizeId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("OrderDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
@@ -236,9 +238,6 @@ namespace ANK14.BurgerShop.DAL.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("OrderId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Quantity")
                         .HasColumnType("int");
 
                     b.HasKey("Id");

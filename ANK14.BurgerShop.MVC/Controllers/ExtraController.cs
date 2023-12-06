@@ -41,7 +41,7 @@ namespace ANK14.BurgerShop.MVC.Controllers
                 ViewBag.Error = result.Message;
             }
 
-            return View("Index");
+            return RedirectToAction("Index");
         }
             
         [HttpPost]
@@ -61,7 +61,7 @@ namespace ANK14.BurgerShop.MVC.Controllers
                 ViewBag.Error = result.Message;
             }
 
-            return View("Index");
+            return RedirectToAction("Index");
         }
         [HttpGet]
         public async Task<IActionResult> Delete(int id)

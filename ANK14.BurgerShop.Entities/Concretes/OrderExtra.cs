@@ -10,7 +10,6 @@ namespace ANK14.BurgerShop.Entities.Concretes
     public class OrderExtra : IEntity
     {
         public int Id { get; set; }
-        public int Quantity { get; set; } 
 
         public Order Order { get; set; }
         public int OrderId { get; set; }

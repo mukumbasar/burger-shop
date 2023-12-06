@@ -18,7 +18,7 @@ namespace ANK14.BurgerShop.MVC.Controllers
         public async Task<IActionResult> Index()
         {
             var menuSizeDtos = await _manager.GetAllAsync(true);
-            var menuSizeViewModels = _mapper.Map<List<MenuViewModel>>(menuSizeDtos.Context);
+            var menuSizeViewModels = _mapper.Map<List<MenuSizeViewModel>>(menuSizeDtos.Context);
             ViewBag.MenuSizes = menuSizeViewModels;
             return View();
         }
@@ -39,7 +39,7 @@ namespace ANK14.BurgerShop.MVC.Controllers
                 ViewBag.Error = result.Message;
             }
 
-            return View("Index");
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
@@ -59,7 +59,7 @@ namespace ANK14.BurgerShop.MVC.Controllers
                 ViewBag.Error = result.Message;
             }
 
-            return View("Index");
+            return RedirectToAction("Index");
         }
         [HttpGet]
         public async Task<IActionResult> Delete(int id)

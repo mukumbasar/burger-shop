@@ -5,6 +5,7 @@
         public int Id { get; set; }
         public string Name { get; set; }
         public int Price { get; set; }
-        public string PhotoPath { get; set; }
+        public IFormFile Photo { get; set; }
+        public string? PhotoPath { get; set; }
     }
 }

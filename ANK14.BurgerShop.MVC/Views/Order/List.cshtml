@@ -1,53 +1,29 @@
-﻿@model MenuViewModel
+﻿@model OrderViewModel
 
 <h2 class="text-danger">@ViewBag.Error</h2>
 
-<form asp-action="Add" enctype="multipart/form-data" method="post">
-    <div class="form-group">
-        <label asp-for="Name"></label>
-        <input asp-for="Name" class="form-control" />
-        <span asp-validation-for="Name" class="text-danger"></span>
-    </div>
+<h2>Orders List</h2>
 
-    <div class="form-group">
-        <label asp-for="Price"></label>
-        <input asp-for="Price" class="form-control" />
-        <span asp-validation-for="Price" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Photo"></label>
-        <input asp-for="Photo" type="file" accept="image/*" class="form-control" />
-        <span asp-validation-for="Photo" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary">Add</button>
-    </div>
-</form>
-
-<h2>Menu List</h2>
-
-<table class="grid table" id="Menus">
+<table class="grid table" id="Orders">
     <thead>
         <tr>
             <th>Id</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Photo</th>
+            <th>Quantity</th>
+            <th>Order Date</th>
+            <th>Total Price</th>
             <th>Actions</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var menu in ViewBag.Menus)
+        @foreach (var order in ViewBag.Orders)
         {
             <tr>
-                <td>@menu.Id</td>
-                <td>@menu.Name</td>
-                <td>@menu.Price</td>
+                <td>@order.Id</td>
+                <td>@order.Quantity</td>
+                <td>@order.OrderDate</td>
+                <td>@order.TotalPrice</td>
                 <td>
-                    <img src="@menu.PhotoPath" alt="@menu.Name" width="200" height="200"/>
-                </td>
-                <td>
-                    <a class="details btn btn-dark">Get Menu</a>
+                    <a class="details btn btn-dark">Get Order</a>
                 </td>
             </tr>
         }
@@ -70,16 +46,16 @@
     </div>
 </div>
 
-@section Scripts {
+@section Scripts{
 
     <script type="text/javascript">
         $(function () {
-            $("#Menus .details").click(function () {
+            $("#Orders .details").click(function () {
                 var id = $(this).closest("tr").find("td").eq(0).html();
 
                 $.ajax({
                     type: "GET",
-                    url: "/Menu/GetMenu",
+                    url: "/Extra/GetOrder",
                     data: { "id": id },
                     success: function (response) {
                         $("#partialModal").find(".modal-body").html(response);
@@ -95,6 +71,5 @@
             });
         });
     </script>
-}
-
+    }
 

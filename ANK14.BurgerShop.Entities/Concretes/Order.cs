@@ -10,7 +10,9 @@ namespace ANK14.BurgerShop.Entities.Concretes
     public class Order : IEntity
     {
         public int Id { get; set; }
-        public int Quantity { get; set; }      
+        public int Quantity { get; set; }    
+        
+        public DateTime OrderDate { get; set; }
 
         List<OrderExtra> OrderExtras { get; set; }
 
@@ -22,5 +24,10 @@ namespace ANK14.BurgerShop.Entities.Concretes
 
         public int MenuSizeId { get; set; }
         public MenuSize MenuSize { get; set; }
+
+        public Order()
+        {
+            OrderDate = DateTime.Now;
+        }
     }
 }
