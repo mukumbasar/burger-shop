@@ -3,7 +3,9 @@
 @inject SignInManager<AppUser> SignInManager
 @inject UserManager<AppUser> UserManager
 
-<ul class="navbar-nav">
+
+
+<ul class="navbar-nav mx-auto">
     @if (SignInManager.IsSignedIn(User))
     {
         <li class="nav-item">

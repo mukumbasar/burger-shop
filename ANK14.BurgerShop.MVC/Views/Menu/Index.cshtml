@@ -2,6 +2,11 @@
 
 <h2 class="text-danger">@ViewBag.Error</h2>
 
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="alert alert-info text-center">
 <form asp-action="Add" enctype="multipart/form-data" method="post">
     <div class="form-group">
         <label asp-for="Name"></label>
@@ -23,7 +28,9 @@
         <button type="submit" class="btn btn-primary">Add</button>
     </div>
 </form>
-
+            </div>
+        </div>
+    </div>
 <h2>Menu List</h2>
 
 <table class="grid table" id="Menus">
@@ -44,7 +51,7 @@
                 <td>@menu.Name</td>
                 <td>@menu.Price</td>
                 <td>
-                    <img src="@menu.PhotoPath" alt="@menu.Name" width="200" height="200"/>
+                    <img src="@menu.PhotoPath" alt="@menu.Name" width="150" height="150"/>
                 </td>
                 <td>
                     <a class="details btn btn-dark">Get Menu</a>
@@ -53,7 +60,7 @@
         }
     </tbody>
 </table>
-
+</div>
 <div class="modal fade" id="partialModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

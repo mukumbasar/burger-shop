@@ -57,7 +57,6 @@ namespace ANK14.BurgerShop.MVC.Controllers
             ViewBag.MenuSizes = selectList.Items;
             return View();
         }
-
         [HttpPost]
         public async Task<IActionResult> Add(OrderViewModel vm)
         {
@@ -155,7 +154,6 @@ namespace ANK14.BurgerShop.MVC.Controllers
 
                 ViewBag.Error = result.Message;
             }
-
             return RedirectToAction("List");
         }
         [HttpGet]
@@ -166,7 +164,6 @@ namespace ANK14.BurgerShop.MVC.Controllers
             await _orderManager.DeleteAsync(dto.Context);
             return RedirectToAction("List");
         }
-
         public async Task<IActionResult> GetOrder(int id)
         {
             var a = await _orderManager.ListOrders(User.FindFirst(ClaimTypes.NameIdentifier).Value);
@@ -183,14 +180,11 @@ namespace ANK14.BurgerShop.MVC.Controllers
 
             var selectList = new SelectList(menuSizesList);
 
-
             List<SelectListItem> menusList = new List<SelectListItem>();
-
             foreach (var item in Menus.Context)
             {
                 menusList.Add(new SelectListItem(item.Name + " " + item.Price.ToString(), item.Id.ToString()));
             };
-
             var selectList2 = new SelectList(menusList);
             ViewBag.Menus = selectList2.Items;
             ViewBag.MenuSizes = selectList.Items;
