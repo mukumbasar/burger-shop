@@ -8,7 +8,7 @@
 
 <form asp-action="Update" method="post">
     
-
+    <input type="hidden" asp-for="Id" />
     <div class="form-group">
         <label asp-for="MenuId">Menus</label>
         <select id="menuList" class="form-control" asp-for="MenuId" asp-items="@ViewBag.Menus"></select>

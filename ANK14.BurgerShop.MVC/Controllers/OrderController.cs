@@ -74,6 +74,7 @@ namespace ANK14.BurgerShop.MVC.Controllers
                     
                     foreach (var item in vm.SelectedExtraIds)
                     {
+                        
                         OrderExtraDto orderExtraDto = new()
                         {
                             ExtraId = item,
@@ -114,7 +115,7 @@ namespace ANK14.BurgerShop.MVC.Controllers
 
             foreach (var item in Menus.Context)
             {
-                menuSizesList.Add(new SelectListItem(item.Name + " " + item.Price.ToString(), item.Id.ToString()));
+                menusList.Add(new SelectListItem(item.Name + " " + item.Price.ToString(), item.Id.ToString()));
             };
 
             var selectList2 = new SelectList(menusList);
@@ -124,42 +125,22 @@ namespace ANK14.BurgerShop.MVC.Controllers
             ViewBag.Orders = a.Context;
             return View();
         }
-        //[HttpGet]
-        //public async Task<IActionResult> Update(int id)
-        //{
-        //    var Menu = await _menuManager.GetAsync(true, x => x.Id == id);
-        //    var Extras = await _extraManager.GetAllAsync(true);
-        //    var MenuSizes = await _menuSizeManager.GetAllAsync(true);
-        //    ViewBag.Extras = Extras.Context;
-        //    ViewBag.Menu = Menu.Context;
-
-        //    List<SelectListItem> menuSizesList = new List<SelectListItem>();
-
-        //    foreach (var item in MenuSizes.Context)
-        //    {
-        //        menuSizesList.Add(new SelectListItem(item.Name + " " + item.AdditionalPrice.ToString(), item.Id.ToString()));
-        //    };
-
-        //    var selectList = new SelectList(menuSizesList);
-
-        //    ViewBag.MenuSizes = selectList.Items;
-        //    return View();
-        //}
 
         [HttpPost]
         public async Task<IActionResult> Update(OrderViewModel vm)
         {
 
+            ModelState.Remove("SelectedExtraIds");
             if (ModelState.IsValid)
             {
                 var dto = _mapper.Map<OrderDto>(vm);
+                dto.OrderDate = DateTime.Now;
 
                 var result = await _orderManager.UpdateAsync(dto);
 
                 if (result.IsSuccess)
                 {
-                    var orderID = dto.Id;
-
+                    var orderID = vm.Id;
                     foreach (var item in vm.SelectedExtraIds)
                     {
                         OrderExtraDto orderExtraDto = new()
@@ -167,7 +148,6 @@ namespace ANK14.BurgerShop.MVC.Controllers
                             ExtraId = item,
                             OrderId = orderID
                         };
-
                         await _orderExtraManager.UpdateAsync(orderExtraDto);
                     }
                     return RedirectToAction("List");
@@ -189,7 +169,33 @@ namespace ANK14.BurgerShop.MVC.Controllers
 
         public async Task<IActionResult> GetOrder(int id)
         {
+            var a = await _orderManager.ListOrders(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            var Menus = await _menuManager.GetAllAsync(true);
+            var Extras = await _extraManager.GetAllAsync(true);
+            var MenuSizes = await _menuSizeManager.GetAllAsync(true);
 
+            List<SelectListItem> menuSizesList = new List<SelectListItem>();
+
+            foreach (var item in MenuSizes.Context)
+            {
+                menuSizesList.Add(new SelectListItem(item.Name + " " + item.AdditionalPrice.ToString(), item.Id.ToString()));
+            };
+
+            var selectList = new SelectList(menuSizesList);
+
+
+            List<SelectListItem> menusList = new List<SelectListItem>();
+
+            foreach (var item in Menus.Context)
+            {
+                menusList.Add(new SelectListItem(item.Name + " " + item.Price.ToString(), item.Id.ToString()));
+            };
+
+            var selectList2 = new SelectList(menusList);
+            ViewBag.Menus = selectList2.Items;
+            ViewBag.MenuSizes = selectList.Items;
+            ViewBag.Extras = Extras.Context;
+            ViewBag.Orders = a.Context;
             var dto = await _orderManager.GetAsync(true, x => x.Id == id);
             var vm = _mapper.Map<OrderViewModel>(dto.Context);
             
