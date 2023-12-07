@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ANK14.BurgerShop.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231206113601_1Mig")]
-    partial class _1Mig
+    [Migration("20231206210152_first")]
+    partial class first
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

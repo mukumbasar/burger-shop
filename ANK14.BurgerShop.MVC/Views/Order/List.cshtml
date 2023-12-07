@@ -1,5 +1,7 @@
 ﻿@model OrderViewModel
 
+
+
 <h2 class="text-danger">@ViewBag.Error</h2>
 
 <h2>Orders List</h2>
@@ -18,6 +20,7 @@
         @foreach (var order in ViewBag.Orders)
         {
             <tr>
+                
                 <td>@order.Id</td>
                 <td>@order.Quantity</td>
                 <td>@order.OrderDate</td>
@@ -29,6 +32,10 @@
         }
     </tbody>
 </table>
+
+
+
+
 
 <div class="modal fade" id="partialModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -46,17 +53,19 @@
     </div>
 </div>
 
+
+
 @section Scripts{
 
     <script type="text/javascript">
         $(function () {
             $("#Orders .details").click(function () {
-                var id = $(this).closest("tr").find("td").eq(0).html();
+                 var id = $(this).closest("tr").find("td").eq(0).html();
 
                 $.ajax({
                     type: "GET",
-                    url: "/Extra/GetOrder",
-                    data: { "id": id },
+                    url: "/Order/GetOrder",
+                     data: { "id": id },
                     success: function (response) {
                         $("#partialModal").find(".modal-body").html(response);
                         $("#partialModal").modal('show');

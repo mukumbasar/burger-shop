@@ -2,11 +2,13 @@
 using ANK14.BurgerShop.Dtos.Concrete;
 using ANK14.BurgerShop.MVC.Models;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
 
 namespace ANK14.BurgerShop.MVC.Controllers
 {
+    [Authorize(Roles = "AppAdmin")]
     public class ExtraController : Controller
     {
         private readonly IExtraService _manager;

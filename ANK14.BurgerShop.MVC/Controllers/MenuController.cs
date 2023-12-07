@@ -3,10 +3,12 @@ using ANK14.BurgerShop.Dtos.Concrete;
 using ANK14.BurgerShop.MVC.Helpers;
 using ANK14.BurgerShop.MVC.Models;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ANK14.BurgerShop.MVC.Controllers
 {
+    [Authorize(Roles = "AppAdmin")]
     public class MenuController : Controller
     {
 

@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDALDependencies(builder.Configuration.GetConnectionString("UtkuConString"));
+builder.Services.AddDALDependencies(builder.Configuration.GetConnectionString("CansinConString"));
 
 builder.Services.AddBLLDependencies(Assembly.GetExecutingAssembly());
 
@@ -35,9 +35,19 @@ using (var scope = app.Services.CreateScope())
 
     }, "adminadmin");
 
+    await userManager.CreateAsync(new AppUser()
+    {
+        UserName = "cansin",
+        Email = "cansin@gmail.com",
+        Name = "cansin",
+        Surname = "albayrak",
+        Address = "cansin"
 
+    }, "cansincansin");
     var adminUser = await userManager.FindByEmailAsync("admin@gmail.com");
+    var user = await userManager.FindByEmailAsync("cansin@gmail.com");
     await userManager.AddToRoleAsync(adminUser, "AppAdmin");
+    await userManager.AddToRoleAsync(user, "AppClient");
 }
 
 // Configure the HTTP request pipeline.
