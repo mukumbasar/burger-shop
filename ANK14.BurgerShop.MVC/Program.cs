@@ -1,6 +1,7 @@
 using ANK14.BurgerShop.BLL.Extensions;
 using ANK14.BurgerShop.DAL.Extensions;
 using ANK14.BurgerShop.Entities.Concretes;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Identity;
 using System.Reflection;
 
@@ -9,9 +10,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDALDependencies(builder.Configuration.GetConnectionString("CansinConString"));
+builder.Services.AddDALDependencies(builder.Configuration.GetConnectionString("UtkuConString"));
 
 builder.Services.AddBLLDependencies(Assembly.GetExecutingAssembly());
+
+builder.Services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
 
 var app = builder.Build();
 
