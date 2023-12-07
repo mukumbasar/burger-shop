@@ -144,6 +144,26 @@ namespace ANK14.BurgerShop.DAL.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Extras");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AdditionalPrice = 25,
+                            Name = "Mini Hamburger"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AdditionalPrice = 35,
+                            Name = "Chicken Bites with Cheese x 4"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AdditionalPrice = 20,
+                            Name = "Vanilla Ice Cream Cone"
+                        });
                 });
 
             modelBuilder.Entity("ANK14.BurgerShop.Entities.Concretes.Menu", b =>
@@ -167,6 +187,36 @@ namespace ANK14.BurgerShop.DAL.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Menus");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Cheeseburger Menu",
+                            PhotoPath = "/images/cheeseburger.jpg",
+                            Price = 160
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Roadhouse Menu",
+                            PhotoPath = "/images/roadhouse.jpg",
+                            Price = 175
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Big Menu",
+                            PhotoPath = "/images/big.jpg",
+                            Price = 200
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Hot Chickenburger Menu",
+                            PhotoPath = "/images/chickenburger.jpg",
+                            Price = 155
+                        });
                 });
 
             modelBuilder.Entity("ANK14.BurgerShop.Entities.Concretes.MenuSize", b =>
@@ -187,6 +237,26 @@ namespace ANK14.BurgerShop.DAL.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("MenuSize");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AdditionalPrice = 30,
+                            Name = "S"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AdditionalPrice = 35,
+                            Name = "M"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AdditionalPrice = 40,
+                            Name = "L"
+                        });
                 });
 
             modelBuilder.Entity("ANK14.BurgerShop.Entities.Concretes.Order", b =>

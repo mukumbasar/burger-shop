@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ANK14.BurgerShop.DAL.Migrations
 {
-    public partial class first : Migration
+    public partial class _1Mig : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -259,6 +259,37 @@ namespace ANK14.BurgerShop.DAL.Migrations
                         principalTable: "Orders",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Extras",
+                columns: new[] { "Id", "AdditionalPrice", "Name" },
+                values: new object[,]
+                {
+                    { 1, 25, "Mini Hamburger" },
+                    { 2, 35, "Chicken Bites with Cheese x 4" },
+                    { 3, 20, "Vanilla Ice Cream Cone" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "MenuSize",
+                columns: new[] { "Id", "AdditionalPrice", "Name" },
+                values: new object[,]
+                {
+                    { 1, 30, "S" },
+                    { 2, 35, "M" },
+                    { 3, 40, "L" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Menus",
+                columns: new[] { "Id", "Name", "PhotoPath", "Price" },
+                values: new object[,]
+                {
+                    { 1, "Cheeseburger Menu", "/images/cheeseburger.jpg", 160 },
+                    { 2, "Roadhouse Menu", "/images/roadhouse.jpg", 175 },
+                    { 3, "Big Menu", "/images/big.jpg", 200 },
+                    { 4, "Hot Chickenburger Menu", "/images/chickenburger.jpg", 155 }
                 });
 
             migrationBuilder.CreateIndex(
