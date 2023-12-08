@@ -11,7 +11,7 @@ using static NuGet.Packaging.PackagingConstants;
 
 namespace ANK14.BurgerShop.MVC.Controllers
 {
-    [Authorize(Roles = "AppAdmin,AppClient")]
+
     public class OrderController : Controller
     {
         private readonly IOrderService _orderManager;
@@ -55,7 +55,7 @@ namespace ANK14.BurgerShop.MVC.Controllers
             var selectList = new SelectList(menuSizesList);
 
             ViewBag.MenuSizes = selectList.Items;
-            return View();
+            return View("Place");
         }
         [HttpPost]
         public async Task<IActionResult> Add(OrderViewModel vm)
@@ -88,7 +88,7 @@ namespace ANK14.BurgerShop.MVC.Controllers
                 ViewBag.Error = result.Message;
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Place", new { id = dto.MenuId });
         }
 
         [HttpGet]
