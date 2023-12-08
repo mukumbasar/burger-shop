@@ -15,7 +15,7 @@
                     <input asp-for="Name" class="form-control" />
                     <span asp-validation-for="Name" class="text-danger"></span> <br />
                     <label asp-for="AdditionalPrice"></label>
-                    <input asp-for="AdditionalPrice" class="form-control" />
+                    <input asp-for="AdditionalPrice" class="form-control" min="1" max="10000" step="1" />
                     <span asp-validation-for="AdditionalPrice" class="text-danger"></span> <br />
                     <input class="mb-4" type="submit" value="Add">
                 </form>
@@ -37,7 +37,7 @@
                 <tr>
                     <td>@extra.Id</td>
                     <td>@extra.Name</td>
-                    <td>@extra.AdditionalPrice</td>
+                    <td>@extra.AdditionalPrice ₺</td>
                     <td>
                         <a class="details btn btn-dark">Get Extra</a>
                     </td>
