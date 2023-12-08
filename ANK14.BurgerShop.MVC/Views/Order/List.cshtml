@@ -10,6 +10,7 @@
     <thead>
         <tr>
             <th>Id</th>
+            <th>Client</th>
             <th>Quantity</th>
             <th>Order Date</th>
             <th>Total Price</th>
@@ -22,9 +23,10 @@
             <tr>
                 
                 <td>@order.Id</td>
+                <td>@order.AppUserNameAndSurname</td>
                 <td>@order.Quantity</td>
                 <td>@order.OrderDate</td>
-                <td>@order.TotalPrice</td>
+                <td>@order.TotalPrice ₺</td>
                 <td>
                     <a class="details btn btn-dark">Get Order</a>
                 </td>

@@ -8,22 +8,33 @@
     <div class="agile-row">
         <h2>Sign Up </h2>
         <div class="login-agileits-top">
-            <form asp-action="Register" method="post">
-                <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+            <form asp-action="Register" method="post"> 
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div> 
                 <label asp-for="Name" class="form-label"></label>
                 <input asp-for="Name" class="form-control">
+                <span asp-validation-for="Name"></span>
+                <br>
                 <label asp-for="Surname" class="form-label"></label>
                 <input asp-for="Surname" class="form-control">
+                <span asp-validation-for="Surname"></span>
+                <br>
                 <label asp-for="Email" class="form-label"></label>
                 <input asp-for="Email" class="form-control">
                 <span asp-validation-for="Email"></span>
+                <br>
                 <label asp-for="UserName" class="form-label"></label>
                 <input asp-for="UserName" class="form-control">
+                <span asp-validation-for="UserName"></span>
+                <br>
                 <label asp-for="Password" class="form-label"></label>
                 <input asp-for="Password" class="form-control">
+                <span asp-validation-for="Password"></span>
+                <br>
                 <label asp-for="Address" class="form-label"></label>
                 <input asp-for="Address" class="form-control">
-                <input type="submit" value="Sign Up">
+                <span asp-validation-for="Address"></span>
+                <br>
+                <input style="width : 30%; margin-left:auto; margin-right: auto; display: block" type="submit" value="Sign Up">
             </form>
         </div>
     </div>

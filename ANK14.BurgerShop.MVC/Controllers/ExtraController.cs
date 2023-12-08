@@ -79,7 +79,6 @@ namespace ANK14.BurgerShop.MVC.Controllers
             var dto = await _manager.GetAsync(true, x => x.Id == id);
             var vm =_mapper.Map<ExtraViewModel>(dto.Context);
 
-
             return PartialView("_ExtraPartialView", vm);
         }
     }

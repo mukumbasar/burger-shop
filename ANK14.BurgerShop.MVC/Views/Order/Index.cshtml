@@ -11,7 +11,7 @@
             <img src="@item.PhotoPath" alt="@item.Name" width="200" height="200" class="card-img-top">
             <div class="card-body">
                 <h5 class="card-title">@item.Name</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p class="card-text">@item.Price ₺</p>
                 @if (User?.Identity != null && User.Identity.IsAuthenticated)
                 {
                     <a asp-action="Place" asp-route-id="@item.Id" class="btn btn-warning">Choose Menu</a>

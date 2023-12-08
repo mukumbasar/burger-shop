@@ -16,7 +16,7 @@
 
     <div class="form-group">
         <label asp-for="Price"></label>
-        <input asp-for="Price" class="form-control" />
+        <input asp-for="Price" class="form-control" min="1" max="10000" step="1" />
         <span asp-validation-for="Price" class="text-danger"></span>
     </div>
     <div class="form-group">
@@ -33,7 +33,7 @@
     </div>
 <h2>Menu List</h2>
     <!-- Menu Start -->
-    <div class="container-xxl py-5">
+    @* <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                 <h5 class="section-title ff-secondary text-center text-primary fw-normal">Food Menu</h5>
@@ -373,7 +373,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> *@
     <!-- Menu End -->
 <table class="grid table" id="Menus">
     <thead>
@@ -391,7 +391,7 @@
             <tr>
                 <td>@menu.Id</td>
                 <td>@menu.Name</td>
-                <td>@menu.Price</td>
+                <td>@menu.Price ₺</td>
                 <td>
                     <img src="@menu.PhotoPath" alt="@menu.Name" width="150" height="150"/>
                 </td>

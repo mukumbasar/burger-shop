@@ -13,5 +13,7 @@ namespace ANK14.BurgerShop.BLL.Services
     public interface IOrderService : IBaseService<Order, OrderDto>
     {
         Task<Response<IEnumerable<OrderDto>>> ListOrders(string Id);
+        Task InsertWithExtras(OrderDto orderDto);
+        Task UpdateWithExtras(OrderDto orderDto);
     } 
 }

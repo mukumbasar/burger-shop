@@ -19,7 +19,7 @@
 
                 <div class="form-group">
                     <label asp-for="Quantity" class="text-dark">Quantity</label>
-                    <input asp-for="Quantity" class="form-control" />
+                    <input asp-for="Quantity" class="form-control" min="1" max="10" step="1" />
                     <span asp-validation-for="Quantity" class="text-danger"></span>
                 </div>
 
@@ -48,6 +48,7 @@
 
                 <div class="form-group text-center">
                     <button type="submit" class="btn btn-primary">Update</button>
+                    <br />
                     <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>
                 </div>
             </form>
