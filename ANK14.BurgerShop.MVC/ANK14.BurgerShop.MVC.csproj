@@ -20,4 +20,8 @@
     <ProjectReference Include="..\ANK14.BurgerShop.BLL\ANK14.BurgerShop.BLL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\bootstrap-restaurant-template\img\" />
+  </ItemGroup>
+
 </Project>

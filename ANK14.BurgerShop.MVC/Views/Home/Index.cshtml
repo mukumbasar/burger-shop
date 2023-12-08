@@ -2,51 +2,12 @@
     ViewData["Title"] = "Home Page";
 }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Burger Shop - Hoşgeldiniz</title>
-    <style>
-        body {
-            font-family: cursive;
-            margin: 0;
-            padding: 0;
-            background-color: black !important;
-        }
 
-        .welcome-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            text-align: left;
-            margin-top: 100px;
-            color: #343a40;
-        }
-
-            .welcome-container h1 {
-                font-size: 3rem;
-                color: #e44d26;
-            }
-
-            .welcome-container p {
-                font-size: 1.5rem;
-            }
-
-            .welcome-container img {
-                max-width: 300px;
-                height: auto;
-            }
-    </style>
-</head>
-<body>
-    <div class="container welcome-container">
-        <div class="text-container">
-            <h1 class="display-4">Hoşgeldiniz</h1>
-            <p>Burger Shop'e hoş geldiniz. Lezzetli burgerlerimizle sizi ağırlamaktan mutluluk duyuyoruz.</p>
-        </div>
-        <img src="~/images/hamb.jpg" alt="Burger Shop Image" class="img-fluid" />
-    </div>
-</body>
-</html>
+<div class="col-lg-6 text-center text-lg-start">
+    <h1 class="display-3 text-white animated slideInLeft">Welcome to<br>Burger Store</h1>
+    <p class="text-white animated slideInLeft mb-4 pb-2">To taste our amazing burgers, you must first log in. Click on the menu to list our delicious burgers..</p>
+    <a class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft" asp-controller="Menu" asp-action="Index">Menu</a>
+</div>
+<div class="col-lg-6 text-center text-lg-end overflow-hidden">
+    <img class="img-fluid" src="img/hero.png" alt="">
+</div>

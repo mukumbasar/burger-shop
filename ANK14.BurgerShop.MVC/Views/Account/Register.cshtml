@@ -3,41 +3,28 @@
 }
 @model RegisterViewModel
 <div class="row">@ViewBag.RegisterError</div>
-<div class="row">
-    <div class="col-md-8 mb-3">
-        <form asp-action="Register">
-            <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
-            <div>
-                <label asp-for="UserName" class="form-label"></label>
-                <input asp-for="UserName" class="form-control">
-                <span asp-validation-for="UserName"></span>
-            </div>
-            <div>
+<!-- login form -->
+<div class="login-form login-form-left">
+    <div class="agile-row">
+        <h2>Sign Up </h2>
+        <div class="login-agileits-top">
+            <form asp-action="Register" method="post">
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
                 <label asp-for="Name" class="form-label"></label>
                 <input asp-for="Name" class="form-control">
-                <span asp-validation-for="Name"></span>
-            </div>
-            <div>
                 <label asp-for="Surname" class="form-label"></label>
                 <input asp-for="Surname" class="form-control">
-                <span asp-validation-for="Surname"></span>
-            </div>
-            <div>
-                <label asp-for="Address" class="form-label"></label>
-                <input asp-for="Address" class="form-control">
-                <span asp-validation-for="Address"></span>
-            </div>
-            <div>
                 <label asp-for="Email" class="form-label"></label>
                 <input asp-for="Email" class="form-control">
                 <span asp-validation-for="Email"></span>
-            </div>
-            <div>
+                <label asp-for="UserName" class="form-label"></label>
+                <input asp-for="UserName" class="form-control">
                 <label asp-for="Password" class="form-label"></label>
                 <input asp-for="Password" class="form-control">
-                <span asp-validation-for="Password"></span>
-            </div>
-            <button type="submit" class="btn btn-primary">Register</button>
-        </form>
+                <label asp-for="Address" class="form-label"></label>
+                <input asp-for="Address" class="form-control">
+                <input type="submit" value="Sign Up">
+            </form>
+        </div>
     </div>
 </div>
