@@ -10,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDALDependencies(builder.Configuration.GetConnectionString("BurcuConString"));
+builder.Services.AddDALDependencies(builder.Configuration.GetConnectionString("UtkuConString"));
 
 builder.Services.AddBLLDependencies(Assembly.GetExecutingAssembly());
 
