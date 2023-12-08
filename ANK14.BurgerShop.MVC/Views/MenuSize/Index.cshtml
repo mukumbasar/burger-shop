@@ -4,33 +4,23 @@
 
 
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="alert alert-warning text-center">
-<form asp-action="Add" method="post">
-    <div class="form-group">
-        <label asp-for="Name"></label>
-        <input asp-for="Name" class="form-control" />
-        <span asp-validation-for="Name" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="AdditionalPrice"></label>
-        <input asp-for="AdditionalPrice" class="form-control" min="1" max="10000" step="1" />
-        <span asp-validation-for="AdditionalPrice" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary">Add</button>
-    </div>
-</form>
+    <div class="login-form login-form-left">
+        <div class="agile-row">
+            <h2>Add Menu Size</h2>
+            <div class="login-agileits-top">
+                <form asp-action="Add" method="post">
+                    <label asp-for="Name"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span> <br />
+                    <label asp-for="AdditionalPrice"></label>
+                    <input asp-for="AdditionalPrice" class="form-control" />
+                    <span asp-validation-for="AdditionalPrice" class="text-danger"></span> <br />
+                    <input class="mb-4" type="submit" value="Add">
+                </form>
             </div>
         </div>
-    </div>
 
-<h2>Menu Size List</h2>
-
-<table class="grid table" id="MenuSizes">
+<table class="grid table mt-4 text-light" id="MenuSizes">
     <thead>
         <tr>
             <th>Id</th>
@@ -45,7 +35,7 @@
             <tr>
                 <td>@extra.Id</td>
                 <td>@extra.Name</td>
-                <td>@extra.AdditionalPrice ₺</td>
+                <td>@extra.AdditionalPrice</td>
                 <td>
                     <a class="details btn btn-dark">Get Menu Size</a>
                 </td>
@@ -58,7 +48,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Data Modal</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Menu Size</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

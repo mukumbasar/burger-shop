@@ -159,14 +159,30 @@
     background-size: cover;
 }
 
-.hero-header img {
-    animation: imgRotate 50s linear infinite;
-}
+    .hero-header img {
+        display: inline-block;
+        transform: rotate(0deg);
+        animation: imgRotate 5s linear infinite;
+    }
 
-@keyframes imgRotate { 
-    100% { 
-        transform: rotate(360deg); 
-    } 
+@keyframes imgRotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(-45deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    75% {
+        transform: rotate(45deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
 }
 
 .breadcrumb-item + .breadcrumb-item::before {
