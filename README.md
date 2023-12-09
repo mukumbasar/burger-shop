@@ -10,6 +10,10 @@ Signing Up Module:
 
 ![burger-shop-register](https://github.com/mukumbasar/burger-shop/assets/93601245/a90d17da-a6b1-416c-a945-05f0f508ceca)
 
+Admin Module:
+
+![admin-burger-shop](https://github.com/mukumbasar/burger-shop/assets/93601245/fa47efb6-16d9-464f-9ceb-c7f9cf748367)
+
 Menu Module:
 
 ![burger-shop-menu](https://github.com/mukumbasar/burger-shop/assets/93601245/6348c680-d33a-438c-b601-fd1450f77e8d)
