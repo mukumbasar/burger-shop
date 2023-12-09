@@ -6,7 +6,7 @@ Database:
 
 ![burger-shop-db](https://github.com/mukumbasar/burger-shop/assets/93601245/f369b518-4c04-4e48-9ffd-742cf6856f9b)
 
-Signing Up Module:
+Signing Module:
 
 ![burger-shop-register](https://github.com/mukumbasar/burger-shop/assets/93601245/a90d17da-a6b1-416c-a945-05f0f508ceca)
 
