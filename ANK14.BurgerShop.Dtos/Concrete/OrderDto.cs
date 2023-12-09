@@ -18,6 +18,7 @@ namespace ANK14.BurgerShop.Dtos.Concrete
         public int MenuId { get; set; }
         public Menu? Menu { get; set; }
         public int MenuSizeId { get; set; }
+        public MenuSize? MenuSize { get; set; }
         public int TotalPrice { get; set; }
         public DateTime OrderDate { get; set; }
         public List<int>? SelectedExtraIds { get; set; }

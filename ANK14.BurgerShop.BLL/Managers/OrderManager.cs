@@ -33,7 +33,7 @@ namespace ANK14.BurgerShop.BLL.Managers
         {
             var user = await _userManager.FindByIdAsync(id);
 
-            var orders = (await GetAllAsync(true, null, x => x.Menu, x => x.AppUser)).Context;
+            var orders = (await GetAllAsync(true, null, x => x.Menu, x=> x.MenuSize, x => x.AppUser)).Context;
 
             if (!await _userManager.IsInRoleAsync(user,"AppAdmin"))
             {
@@ -51,6 +51,7 @@ namespace ANK14.BurgerShop.BLL.Managers
 
                 order.AppUserNameAndSurname = order.AppUser.Name + " " + order.AppUser.Surname;
 
+                order.TotalPrice += order.MenuSize.AdditionalPrice;
                 order.TotalPrice += order.Menu.Price * order.Quantity;
             }
 
