@@ -1,6 +1,6 @@
 # Burger Shop Website
 
-A NTier modular burger shop website which implements Entity Framework Core, MS SQL Server, ASP.NET Core Identity, ASP.NET Core MVC; and various design patterns such as repository, response, option, singleton and unit of work.
+A NTier modular burger shop website which implements Entity Framework Core, ASP.NET Core Identity, AutoMapper, Dependency Injection; MS SQL Server; ASP.NET Core MVC; and various design patterns such as repository, response, option, singleton and unit of work.
 
 Database:
 
